@@ -19,17 +19,18 @@
                 <tbody>
                     @if ($companies->isNotEmpty())
                         @foreach ($companies as $company)
-                            <td>{{ $company->$id }}</td>
-                            <td>{{ $company->$name }}</td>
-                            <td>{{ $company->$email }}</td>
-                            <td>{{ $company->$logo }}</td>
-                            <td>{{ $company->$website }}</td>
-                        @endforeach
-                    @else
-                        <td colspan="6" style="text-align:center">
-                            No Company record exist
-                        </td>
-                    @endif
+                            <tr>
+                                <td>{{ $company->id }}</td>
+                                <td>{{ $company->name }}</td>
+                                <td>{{ $company->email }}</td>
+                                <td>{{ $company->logo }}</td>
+                                <td>{{ $company->website }}</td>
+                            </tr @endforeach
+                        @else
+                            <td colspan="6" style="text-align:center">
+                                No Company record exist
+                            </td>
+                        @endif
                 </tbody>
             </table>
         </div><!-- /.card-body -->
