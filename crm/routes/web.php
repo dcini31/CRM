@@ -28,5 +28,8 @@ Auth::routes();
 Route::get('/', [LoginsController::class, 'index'])->name('welcome');
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 Route::get('/companies', [CompanyController::class, 'show'])->name('company/showCompanies');
-Route::get('/companies/create', [CompanyController::class, 'create'])->name('company/create');
 Route::get('/employees', [EmployeeController::class, 'show'])->name('employee/showEmployees');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/companies/create', [CompanyController::class, 'create'])->name('company/create');
+});
