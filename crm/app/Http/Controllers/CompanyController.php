@@ -16,7 +16,6 @@ class CompanyController extends Controller
     }
     public function create()
     {
-        $user = Auth::user();
-        return view('company.create', ['user' => $user, 'title' => 'create']);
+        return view('company.create');
     }
 }

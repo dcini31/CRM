@@ -1,6 +1,10 @@
 @extends('layouts.company')
-
+@section('add-company')
+    <a href="{{ route('company/create') }}"class="nav-link">Add Company
+    </a>
+@endsection
 @section('content')
+
     <div class="card-body">
         {{-- // --}}
         <div class="table-responsive">

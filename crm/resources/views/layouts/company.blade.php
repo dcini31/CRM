@@ -15,7 +15,7 @@
             @include('includes.nav')
 
             <!-- /.navbar -->
-            @extends('includes.aside')
+            @include('includes.aside')
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -57,8 +57,7 @@
                                         <div class="card-tools">
                                             <ul class="nav nav-pills ml-auto">
                                                 <li class="nav-item">
-                                                    <a href="{{ route('company/create') }}"class="nav-link">Add Company
-                                                    </a>
+                                                    @yield('add-company')
                                                 </li>
                                             </ul>
                                         </div>
