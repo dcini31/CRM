@@ -26,7 +26,8 @@
                                 <td>{{ $company->id }}</td>
                                 <td>{{ $company->name }}</td>
                                 <td>{{ $company->email }}</td>
-                                <td>{{ $company->logo }}</td>
+                                <td><img src="{{ asset('storage/public/company-logos/' . $company->logo) }}"
+                                        alt="{{ $company->name }} Logo" width="auto" height="150"></td>
                                 <td>{{ $company->website }}</td>
                                 <td></td>
                                 <td></td>

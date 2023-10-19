@@ -31,7 +31,10 @@ class CompanyController extends Controller
             'website' => 'required',
         ]);
         if (request('logo')) {
-            $inputs['logo'] = request('logo')->store('public/company-logos');
+            $logoPath = request('logo')->store('public/company-logos');
+            // Save only the file name, not the full path
+            $inputs['logo'] = basename($logoPath);
+            // $inputs['logo'] = request('logo')->store('public/company-logos');
         }
 
         Company::create($inputs + ['user_id' => auth()->user()->id]);
