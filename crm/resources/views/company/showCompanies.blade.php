@@ -4,11 +4,10 @@
     </a>
 @endsection
 @section('content')
-
     <div class="card-body">
         {{-- // --}}
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -29,6 +28,8 @@
                                 <td>{{ $company->email }}</td>
                                 <td>{{ $company->logo }}</td>
                                 <td>{{ $company->website }}</td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         @endforeach
                     @else
@@ -39,4 +40,16 @@
                 </tbody>
             </table>
         </div><!-- /.card-body -->
-    @endsection
+        <div class="d-flex justify-content-center">
+            @if ($companies->lastPage() > 1)
+                <ul class="pagination">
+                    @for ($i = 1; $i <= $companies->lastPage(); $i++)
+                        <li class="page-item {{ $companies->currentPage() == $i ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $companies->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+                </ul>
+            @endif
+        </div>
+    </div>
+@endsection

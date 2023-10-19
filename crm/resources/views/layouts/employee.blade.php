@@ -29,7 +29,7 @@
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Dashboard v1</li>
+                                    <li class="breadcrumb-item active">Employees Dashboard</li>
                                 </ol>
                             </div><!-- /.col -->
                         </div><!-- /.row -->
