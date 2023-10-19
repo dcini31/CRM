@@ -128,7 +128,9 @@
                                             </ul>
                                         </div>
                                     </div><!-- /.card-header -->
+                                    {{-- card body --}}
                                     @yield('content')
+                                    {{-- /.card body --}}
                                 </div>
                                 <!-- /.card -->
 
