@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
@@ -22,7 +23,7 @@ class CompanyController extends Controller
         return view('company.create', ['companyCount' => $companyCount]);
     }
 
-    public function store()
+    public function store(Company $company)
     {
         $inputs = request()->validate([
             'name' => 'required|min:1|max:255',
@@ -39,6 +40,15 @@ class CompanyController extends Controller
 
         Company::create($inputs + ['user_id' => auth()->user()->id]);
 
+        Session::flash('success-message', $inputs['name'] . ' has been created');
+        return redirect()->route('company/store');
+    }
+
+    public function destroy(Company $company)
+    {
+        $company->delete();
+
+        Session::flash('message', $company->name . ' was deleted');
         return back();
     }
 }

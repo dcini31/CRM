@@ -1,4 +1,11 @@
 @extends('layouts.company')
+@section('message')
+    @if (Session::has('message'))
+        <div class="alert alert-danger"> {{ Session::get('message') }}</div>
+    @elseif(session('success-message'))
+        <div class="alert alert-success"> {{ Session::get('success-message') }}</div>
+    @endif
+@endsection
 @section('add-company')
     <a href="{{ route('company/create') }}"class="nav-link">Add Company
     </a>
@@ -30,7 +37,15 @@
                                         alt="{{ $company->name }} Logo" width="auto" height="150"></td>
                                 <td>{{ $company->website }}</td>
                                 <td></td>
-                                <td></td>
+                                <td>
+                                    <form method="post" action="{{ route('company/destroy', $company->id) }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Delete</button>
+
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     @else

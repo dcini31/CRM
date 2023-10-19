@@ -33,4 +33,5 @@ Route::get('/employees', [EmployeeController::class, 'show'])->name('employee/sh
 Route::middleware(['auth'])->group(function () {
     Route::get('/companies/create', [CompanyController::class, 'create'])->name('company/create');
     Route::post('/companies', [CompanyController::class, 'store'])->name('company/store');
+    Route::delete('/companies/{company}/delete', [CompanyController::class, 'destroy'])->name('company/destroy');
 });
