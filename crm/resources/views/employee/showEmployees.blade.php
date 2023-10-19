@@ -1,4 +1,4 @@
-@include('layouts.company')
+@extends('layouts.employee')
 
 @section('content')
 @endsection
