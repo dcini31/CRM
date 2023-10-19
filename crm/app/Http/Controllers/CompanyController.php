@@ -11,8 +11,8 @@ class CompanyController extends Controller
     public function show()
     {
         $companies = Company::all();
-
-        return view('company.showCompanies', ['companies' => $companies]);
+        $companyCount = Company::count();
+        return view('company.showCompanies', compact('companyCount'), ['companies' => $companies]);
     }
     public function create()
     {
