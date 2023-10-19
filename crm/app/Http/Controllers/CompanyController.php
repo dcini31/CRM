@@ -12,10 +12,17 @@ class CompanyController extends Controller
     {
         $companies = Company::all();
         $companyCount = Company::count();
-        return view('company.showCompanies', compact('companyCount'), ['companies' => $companies]);
+        return view('company.showCompanies', ['companyCount' => $companyCount, 'companies' => $companies]);
     }
     public function create()
     {
-        return view('company.create');
+        $companyCount = Company::count();
+        return view('company.create', ['companyCount' => $companyCount]);
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+        // $company = new Company();  
     }
 }

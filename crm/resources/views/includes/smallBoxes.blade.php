@@ -4,13 +4,13 @@
         <div class="small-box bg-info">
             <div class="inner">
                 <h3>{{ $companyCount }}</h3>
-
                 <p>Companies</p>
             </div>
             <div class="icon">
                 <i class="fas fa-building"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('company/showCompanies') }}" class="small-box-footer">More info <i
+                    class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
