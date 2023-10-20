@@ -17,7 +17,8 @@
                         value="{{ $companies->email }}">
                 </div>
                 <div class="form-group">
-                    <div><img src="{{ $companies->logo }}" alt="" width="auto" height="150"></div>
+                    <div><img src="{{ asset('storage/public/company-logos/' . $companies->logo) }}" alt=""
+                            width="auto" height="150"></div>
                     <label for="logo">Logo</label>
                     <input type="file" name="logo" class="form-control-file" id="logo">
                 </div>
