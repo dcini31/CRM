@@ -20,7 +20,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Company ID</th>
+                        <th>Company Name</th>
+                        <th>Company Website</th>
                         <th>Name</th>
                         <th>Surname</th>
                         <th>Email</th>
@@ -34,6 +35,7 @@
                             <tr>
                                 <td>{{ $employee->id }}</td>
                                 <td>{{ $employee->company->name }}</td>
+                                <td>{{ $employee->company->website }}</td>
                                 <td>{{ $employee->first_name }}</td>
                                 <td>{{ $employee->last_name }}</td>
                                 <td>{{ $employee->email }}</td>
