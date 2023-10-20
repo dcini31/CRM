@@ -26,22 +26,23 @@ class EmployeeController extends Controller
         return view('employee.create', ['employeeCount' => $employeeCount, 'companyCount' => $companyCount,   'companies' => $companies]);
     }
 
-
     public function store()
     {
         $inputs = request()->validate([
-            'company_id ' => 'required',
+            'company_id' => 'required',
             'first_name' => 'required|min:1|max:255',
             'last_name' => 'required|min:1|max:255',
             'email' => 'required',
-            'phone' => 'required|numeric|min:8|max:8',
+            'phone' => 'required|numeric|digits:8',
         ]);
 
         Employee::create($inputs + ['user_id' => auth()->user()->id]);
 
-        Session::flash('success-message', $inputs['first_name'] . ' \'s profile has been created');
-        return redirect()->route('employee/store');
+        Session::flash('user-created', $inputs['first_name'] . '\'s profile has been created');
+
+        return redirect()->route('employee/showEmployees');
     }
+
 
     public function edit(Company $company)
     {

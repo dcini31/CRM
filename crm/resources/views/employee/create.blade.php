@@ -8,20 +8,23 @@
                 @csrf
                 <div class="form-group">
                     <label for="first_name">First Name</label>
-                    <input type="text" name="first_name" class="form-control" id="first_name" aria-describedby=""
-                        placeholder="First Name">
+                    <input type="text" name="first_name" class="form-control" autocomplete="on" id="first_name"
+                        aria-describedby="" placeholder="First Name">
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last Name</label>
-                    <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Surname">
+                    <input type="text" name="last_name" class="form-control" autocomplete="on" id="last_name"
+                        placeholder="Surname">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                    <input type="email" name="email" class="form-control" autocomplete="on" id="email"
+                        placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="numeric" name="phone" class="form-control" id="phone" placeholder="Phone Number">
+                    <input type="numeric" name="phone" class="form-control" autocomplete="on" id="phone"
+                        placeholder="Phone Number">
                 </div>
                 <div class="form-group">
                     <label for="company_id">Company</label>
