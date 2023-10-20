@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/companies/{company}/delete', [CompanyController::class, 'destroy'])->name('company/destroy');
     Route::patch('/companies/{company}/update', [CompanyController::class, 'update'])->name('company/update');
 
-    Route::get('/employies/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee/edit');
-    Route::delete('/employies/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employee/destroy');
-    Route::patch('/employies/{employee}/update', [EmployeeController::class, 'update'])->name('employee/update');
+    Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee/edit');
+    Route::delete('/employees/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employee/destroy');
+    Route::patch('/employees/{employee}/update', [EmployeeController::class, 'update'])->name('employee/update');
 });

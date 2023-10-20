@@ -43,36 +43,29 @@ class EmployeeController extends Controller
         return redirect()->route('employee/showEmployees');
     }
 
-
-    public function edit(Company $company)
+    public function edit(Employee $employee)
     {
+        $companies = Company::all();
+        $employeeCount = Employee::count();
         $companyCount = Company::count();
-        return view('company.edit', ['companyCount' => $companyCount, 'companies' => $company]);
+
+        return view('employee.edit', ['employeeCount' => $employeeCount, 'companyCount' => $companyCount, 'employee' => $employee, 'companies' => $companies]);
     }
 
-    public function update(Company $company)
+    public function update(Employee $employee)
     {
         $inputs = request()->validate([
-            'name' => 'required|min:1|max:255',
+
+            'first_name' => 'required|min:1|max:255',
+            'last_name' => 'required|min:1|max:255',
             'email' => 'required',
-            'logo' => 'required|file|mimes:jpeg,png,svg',
-            'website' => 'required',
+            'phone' => 'required|numeric|digits:8',
         ]);
-        if (request('logo')) {
-            $logoPath = request('logo')->store('public/company-logos');
-            $inputs['logo'] = basename($logoPath);
-            $company->logo  = $inputs['logo'];
-        }
-        $company->name = $inputs['name'];
-        $company->email = $inputs['email'];
-        $company->website = $inputs['website'];
 
-        $company->save();
-        // $company = Company::where(auth()->user())->save($company);
+        $employee->update($inputs);
 
-
-        Session::flash('updated-message', $inputs['name'] . ' was updated');
-        return redirect()->route('company/store');
+        Session::flash('updated-message', $inputs['first_name'] . ' was updated');
+        return redirect()->route('employee/showEmployees');
     }
 
     public function destroy(Employee $employee)

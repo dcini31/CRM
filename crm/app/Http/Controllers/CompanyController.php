@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\Company;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
@@ -14,10 +12,12 @@ class CompanyController extends Controller
     public function show()
     {
         $companies = Company::paginate(10);
-        $companyCount = Company::count();
         $employeeCount = Employee::count();
-        return view('company.showCompanies', ['companyCount' => $companyCount, 'companies' => $companies, 'employeeCount' => $employeeCount,]);
+        $companyCount = Company::count();
+
+        return view('company.showCompanies', ['companyCount' => $companyCount, 'companies' => $companies, 'employeeCount' => $employeeCount]);
     }
+
     public function create()
     {
         $companyCount = Company::count();
@@ -47,7 +47,8 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         $companyCount = Company::count();
-        return view('company.edit', ['companyCount' => $companyCount, 'companies' => $company]);
+        $employeeCount = Employee::count();
+        return view('company.edit', ['companyCount' => $companyCount, 'companies' => $company, 'employeeCount' => $employeeCount]);
     }
 
     public function update(Company $company)
