@@ -48,4 +48,16 @@
                 </tbody>
             </table>
         </div><!-- /.card-body -->
-    @endsection
+        <div class="d-flex justify-content-center">
+            @if ($employees->lastPage() > 1)
+                <ul class="pagination">
+                    @for ($i = 1; $i <= $employees->lastPage(); $i++)
+                        <li class="page-item {{ $employees->currentPage() == $i ? 'active' : '' }}">
+                            <a class="page-link" href="{{ $employees->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+                </ul>
+            @endif
+        </div>
+    </div>
+@endsection
