@@ -23,7 +23,7 @@ class CompanyController extends Controller
         return view('company.create', ['companyCount' => $companyCount]);
     }
 
-    public function store(Company $company)
+    public function store()
     {
         $inputs = request()->validate([
             'name' => 'required|min:1|max:255',
@@ -33,9 +33,7 @@ class CompanyController extends Controller
         ]);
         if (request('logo')) {
             $logoPath = request('logo')->store('public/company-logos');
-            // Save only the file name, not the full path
             $inputs['logo'] = basename($logoPath);
-            // $inputs['logo'] = request('logo')->store('public/company-logos');
         }
 
         Company::create($inputs + ['user_id' => auth()->user()->id]);

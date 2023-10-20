@@ -4,6 +4,8 @@
         <div class="alert alert-danger"> {{ Session::get('message') }}</div>
     @elseif(session('success-message'))
         <div class="alert alert-success"> {{ Session::get('success-message') }}</div>
+    @elseif(session('success-message'))
+        <div class="alert alert-success"> {{ Session::get('updated-message') }}</div>
     @endif
 @endsection
 @section('add-company')
@@ -20,9 +22,8 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>logo</th>
-                        <th>website</th>
-                        <th>Edit</th>
+                        <th>Logo</th>
+                        <th>Website</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -31,19 +32,17 @@
                         @foreach ($companies as $company)
                             <tr>
                                 <td>{{ $company->id }}</td>
-                                <td>{{ $company->name }}</td>
+                                <td><a href="{{ route('company/edit', $company->id) }}">{{ $company->name }}</a></td>
                                 <td>{{ $company->email }}</td>
-                                <td><img src="{{ asset('storage/public/company-logos/' . $company->logo) }}"
-                                        alt="{{ $company->name }} Logo" width="auto" height="150"></td>
+                                <td> <img src="{{ asset('storage/public/company-logos/' . $company->logo) }}" alt=""
+                                        width="auto" height="150"></td>
                                 <td>{{ $company->website }}</td>
-                                <td></td>
                                 <td>
                                     <form method="post" action="{{ route('company/destroy', $company->id) }}"
                                         enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger">Delete</button>
-
                                     </form>
                                 </td>
                             </tr>
