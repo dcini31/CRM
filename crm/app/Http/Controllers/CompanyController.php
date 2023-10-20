@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\User;
@@ -14,12 +15,14 @@ class CompanyController extends Controller
     {
         $companies = Company::paginate(10)->onEachSide(1);
         $companyCount = Company::count();
-        return view('company.showCompanies', ['companyCount' => $companyCount, 'companies' => $companies]);
+        $employeeCount = Employee::count();
+        return view('company.showCompanies', ['companyCount' => $companyCount, 'companies' => $companies, 'employeeCount' => $employeeCount,]);
     }
     public function create()
     {
         $companyCount = Company::count();
-        return view('company.create', ['companyCount' => $companyCount]);
+        $employeeCount = Employee::count();
+        return view('company.create', ['companyCount' => $companyCount, 'employeeCount' => $employeeCount,]);
     }
 
     public function store()

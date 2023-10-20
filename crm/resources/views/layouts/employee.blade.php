@@ -8,8 +8,8 @@
 
             <!-- Preloader -->
             <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60"
-                    width="60">
+                <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo"
+                    height="60" width="60">
             </div>
 
             <!-- Navbar -->
@@ -23,7 +23,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0">Employee Dashboard</h1>
+                                @yield('message')
                             </div><!-- /.col -->
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -59,8 +59,7 @@
                                     <div class="card-tools">
                                         <ul class="nav nav-pills ml-auto">
                                             <li class="nav-item">
-                                                <a href="#"class="nav-link">Add Employee
-                                                </a>
+                                                @yield('add-employee')
                                             </li>
                                         </ul>
                                     </div>

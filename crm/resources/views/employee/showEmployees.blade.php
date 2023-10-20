@@ -1,5 +1,17 @@
 @extends('layouts.employee')
-
+@section('message-employees')
+    @if (Session::has('message'))
+        <div class="alert alert-danger"> {{ Session::get('message') }}</div>
+    @elseif(session('success-message'))
+        <div class="alert alert-success"> {{ Session::get('success-message') }}</div>
+    @elseif(session('updated-message'))
+        <div class="alert alert-success"> {{ Session::get('updated-message') }}</div>
+    @endif
+@endsection
+@section('add-employee')
+    <a href="{{ route('employee/create') }}"class="nav-link">Add Employee
+    </a>
+@endsection
 @section('content')
     <div class="card-body">
         {{-- // --}}
@@ -13,7 +25,6 @@
                         <th>Surname</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
