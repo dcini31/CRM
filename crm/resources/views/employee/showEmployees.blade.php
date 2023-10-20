@@ -38,6 +38,14 @@
                                 <td>{{ $employee->last_name }}</td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
+                                <td>
+                                    <form method="post" action="{{ route('employee/destroy', $employee->id) }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     @else

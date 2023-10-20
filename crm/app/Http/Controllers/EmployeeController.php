@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
     public function show()
     {
-        $employees = Employee::paginate(10)->onEachSide(1);
+        $employees = Employee::paginate(10);
         $companyCount = Company::count();
         $employeeCount = Employee::count();
         return view('employee.showEmployees', ['employeeCount' => $employeeCount, 'employees' => $employees, 'companyCount' => $companyCount]);
@@ -75,11 +75,11 @@ class EmployeeController extends Controller
         return redirect()->route('company/store');
     }
 
-    public function destroy(Company $company)
+    public function destroy(Employee $employee)
     {
-        $company->delete();
+        $employee->delete();
 
-        Session::flash('message', $company->name . ' was deleted');
+        Session::flash('message', $employee->first_name . ' was deleted');
         return back();
     }
 }

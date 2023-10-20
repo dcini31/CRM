@@ -13,7 +13,7 @@ class CompanyController extends Controller
 {
     public function show()
     {
-        $companies = Company::paginate(10)->onEachSide(1);
+        $companies = Company::paginate(10);
         $companyCount = Company::count();
         $employeeCount = Employee::count();
         return view('company.showCompanies', ['companyCount' => $companyCount, 'companies' => $companies, 'employeeCount' => $employeeCount,]);
