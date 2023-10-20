@@ -51,12 +51,11 @@ class CompanyController extends Controller
         return view('company.edit', ['companyCount' => $companyCount, 'companies' => $company, 'employeeCount' => $employeeCount]);
     }
 
-    public function update(Company $company)
+    public function update(Request $request, Company $company)
     {
         $inputs = request()->validate([
             'name' => 'required|min:1|max:255',
             'email' => 'required',
-            'logo' => 'required|file|mimes:jpeg,png,svg',
             'website' => 'required',
         ]);
         if (request('logo')) {
@@ -73,7 +72,7 @@ class CompanyController extends Controller
 
 
         Session::flash('updated-message', $inputs['name'] . ' was updated');
-        return redirect()->route('company/store');
+        return redirect()->route('company/store', ['page' => $request->page]);
     }
 
     public function destroy(Company $company)

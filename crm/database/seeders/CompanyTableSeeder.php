@@ -13,7 +13,7 @@ class CompanyTableSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             Company::create([
                 'name' => 'Company ' . $i,
                 'email' => 'company' . $i . '@example.com',

@@ -39,7 +39,8 @@
                                 <td>{{ $company->website }}</td>
                                 <td>
                                     <form method="post" action="{{ route('company/destroy', $company->id) }}"
-                                        enctype="multipart/form-data">
+                                        enctype="multipart/form-data"
+                                        onsubmit="return confirm('Are you sure you want to delete this company?');">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger">Delete</button>
