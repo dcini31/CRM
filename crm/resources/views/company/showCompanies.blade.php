@@ -4,7 +4,7 @@
         <div class="alert alert-danger"> {{ Session::get('message') }}</div>
     @elseif(session('success-message'))
         <div class="alert alert-success"> {{ Session::get('success-message') }}</div>
-    @else
+    @elseif(session('updated-message'))
         <div class="alert alert-success"> {{ Session::get('updated-message') }}</div>
     @endif
 @endsection
