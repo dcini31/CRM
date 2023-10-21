@@ -37,7 +37,7 @@
                                 <td>{{ $employee->id }}</td>
                                 <td>{{ $employee->company->name }}</td>
                                 <td><a
-                                        href="{{ route('company/edit', $employee->company->id) }}">{{ $employee->company->website }}</a>
+                                        href="{{ route('company/showCompany', $employee->company->id) }}">{{ $employee->company->website }}</a>
                                 </td>
                                 <td>{{ $employee->first_name }}</td>
                                 <td>{{ $employee->last_name }}</td>
