@@ -36,6 +36,9 @@ class EmployeeController extends Controller
             'phone' => 'required|numeric|digits:8',
         ]);
 
+        $inputs['first_name'] = ucfirst($inputs['first_name']);
+        $inputs['last_name'] = ucfirst($inputs['last_name']);
+
         Employee::create($inputs + ['user_id' => auth()->user()->id]);
 
         Session::flash('user-created', $inputs['first_name'] . '\'s profile has been created');
@@ -61,6 +64,9 @@ class EmployeeController extends Controller
             'email' => 'required',
             'phone' => 'required|numeric|digits:8',
         ]);
+
+        $inputs['first_name'] = ucfirst($inputs['first_name']);
+        $inputs['last_name'] = ucfirst($inputs['last_name']);
 
         $employee->update($inputs);
 

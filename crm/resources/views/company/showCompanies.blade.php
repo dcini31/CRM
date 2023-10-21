@@ -24,6 +24,7 @@
                         <th>Email</th>
                         <th>Logo</th>
                         <th>Website</th>
+                        <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -32,11 +33,13 @@
                         @foreach ($companies as $company)
                             <tr>
                                 <td>{{ $company->id }}</td>
-                                <td><a href="{{ route('company/edit', $company->id) }}">{{ $company->name }}</a></td>
+                                <td><a href="{{ route('company/showCompany', $company->id) }}">{{ $company->name }}</a></td>
                                 <td>{{ $company->email }}</td>
                                 <td> <img src="{{ asset('storage/public/company-logos/' . $company->logo) }}" alt=""
                                         width="auto" height="150"></td>
                                 <td>{{ $company->website }}</td>
+                                <td> <a href="{{ route('company/edit', $company->id) }}" class="btn btn-primary">Edit</a>
+                                </td>
                                 <td>
                                     <form method="post" action="{{ route('company/destroy', $company->id) }}"
                                         enctype="multipart/form-data"

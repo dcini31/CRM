@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
-    public function show()
+    public function index()
     {
         $companies = Company::paginate(10);
         $employeeCount = Employee::count();
@@ -17,6 +17,17 @@ class CompanyController extends Controller
 
         return view('company.showCompanies', ['companyCount' => $companyCount, 'companies' => $companies, 'employeeCount' => $employeeCount]);
     }
+    public function show(Company $company)
+    {
+        $companyCount = Company::count();
+        $employeeCount = Employee::count();
+        return view('company.showCompany', [
+            'companyCount' => $companyCount,
+            'company' => $company, // Pass the selected company
+            'employeeCount' => $employeeCount
+        ]);
+    }
+
 
     public function create()
     {
@@ -37,6 +48,8 @@ class CompanyController extends Controller
             $logoPath = request('logo')->store('public/company-logos');
             $inputs['logo'] = basename($logoPath);
         }
+
+        $inputs['name'] = ucfirst($inputs['name']);
 
         Company::create($inputs + ['user_id' => auth()->user()->id]);
 
@@ -66,6 +79,9 @@ class CompanyController extends Controller
         $company->name = $inputs['name'];
         $company->email = $inputs['email'];
         $company->website = $inputs['website'];
+
+        $inputs['name'] = ucfirst($inputs['name']);
+
 
         $company->save();
         // $company = Company::where(auth()->user())->save($company);

@@ -27,7 +27,8 @@ Auth::routes();
 
 Route::get('/', [LoginsController::class, 'index'])->name('welcome');
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
-Route::get('/companies', [CompanyController::class, 'show'])->name('company/showCompanies');
+Route::get('/companies', [CompanyController::class, 'index'])->name('company/showCompanies');
+
 Route::get('/employees', [EmployeeController::class, 'show'])->name('employee/showEmployees');
 
 Route::middleware(['auth'])->group(function () {
@@ -40,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/companies/{company}/edit', [CompanyController::class, 'edit'])->name('company/edit');
     Route::delete('/companies/{company}/delete', [CompanyController::class, 'destroy'])->name('company/destroy');
     Route::patch('/companies/{company}/update', [CompanyController::class, 'update'])->name('company/update');
+    Route::get('/companies/{company}/show', [CompanyController::class, 'show'])->name('company/showCompany');
 
     Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee/edit');
     Route::delete('/employees/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employee/destroy');

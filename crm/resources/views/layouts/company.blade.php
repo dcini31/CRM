@@ -64,6 +64,7 @@
                                     </div><!-- /.card-header -->
                                     {{-- card body --}}
                                     @yield('content')
+                                    @yield('modal')
                                     {{-- /.card body --}}
                                 </div>
                                 <!-- /.card -->
